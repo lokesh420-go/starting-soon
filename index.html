@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Animation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            font-family: 'Josefin Sans', sans-serif;
+            flex-direction: column; /* Align items in a column */
+        }
+
+        .title-container {
+            position: relative;
+            text-align: center; /* Center align text */
+            margin: 0; /* Remove all margins */
+            padding: 0; /* Remove padding */
+        }
+
+        h1, h2 {
+            color: white;
+            font-family: 'Josefin Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* Initial opacity for animation */
+            animation: fadeInOut 3s linear infinite; /* Apply animation */
+            font-size: 5rem; /* Increased font size */
+            margin: 0; /* Remove margin */
+            padding: 7px /* Remove padding */
+        }
+
+        .letter {
+            opacity: 0;
+            animation: fadeInOut 3s linear infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .particle {
+            position: absolute;
+            background-color: red;
+            border-radius: 50%;
+            animation: move 10s linear infinite;
+        }
+
+        .particle.black {
+            background-color: black;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(1920px, 1080px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title-container">
+        <h1 id="title"></h1>
+        <h2 id="subtitle"></h2> <!-- Added id for subtitle -->
+    </div>
+
+    <script>
+        const titleText = "LOKHESH"; // Updated title text
+        const subtitleText = "STREAMING SOON"; // Added subtitle text
+        const titleElement = document.getElementById("title");
+        const subtitleElement = document.getElementById("subtitle");
+
+        // Clear existing letters
+        titleElement.innerHTML = '';
+        subtitleElement.innerHTML = '';
+
+        // Create new letters for the updated titleText
+        for (let i = 0; i < titleText.length; i++) {
+            const span = document.createElement('span');
+            span.className = 'letter';
+            span.style.animationDelay = `${i * 0.5}s`;
+            span.textContent = titleText[i];
+            titleElement.appendChild(span);
+        }
+
+        // Create new letters for the subtitleText
+        for (let i = 0; i < subtitleText.length; i++) {
+            const span = document.createElement('span');
+            span.className = 'letter';
+            span.style.animationDelay = `${i * 0.5}s`;
+            span.textContent = subtitleText[i];
+            subtitleElement.appendChild(span);
+        }
+
+        const numberOfParticles = 90;
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            if (Math.random() > 0.5) {
+                particle.classList.add('black');
+            }
+            particle.style.width = `${Math.random() * 10 + 5}px`;
+            particle.style.height = particle.style.width;
+            particle.style.top = `${Math.random() * 100}vh`;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            particle.style.animationDelay = `${Math.random() * 10}s`;
+            document.body.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
