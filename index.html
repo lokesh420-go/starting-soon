@@ -72,12 +72,20 @@
                 transform: translate(1920px, 1080px);
             }
         }
+
+        #countdown {
+            color: red; /* Timer color */
+            font-size: 3rem; /* Timer font size */
+            margin-top: 20px; /* Space between subtitle and timer */
+            animation: none; /* Remove animation from timer */
+        }
     </style>
 </head>
 <body>
     <div class="title-container">
         <h1 id="title"></h1>
-        <h2 id="subtitle"></h2> <!-- Added id for subtitle -->
+        <h2 id="subtitle"></h2>
+        <div id="countdown">10:00</div> <!-- Added countdown timer -->
     </div>
 
     <script>
@@ -85,6 +93,7 @@
         const subtitleText = "STREAMING SOON"; // Added subtitle text
         const titleElement = document.getElementById("title");
         const subtitleElement = document.getElementById("subtitle");
+        const countdownElement = document.getElementById("countdown");
 
         // Clear existing letters
         titleElement.innerHTML = '';
@@ -108,7 +117,22 @@
             subtitleElement.appendChild(span);
         }
 
-        const numberOfParticles = 90;
+        // Countdown timer logic
+        let time = 600; // 10 minutes in seconds
+
+        function updateCountdown() {
+            const minutes = Math.floor(time / 60);
+            const seconds = time % 60;
+            countdownElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (time > 0) {
+                time--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
+        updateCountdown();
+
+        const numberOfParticles = 100;
 
         for (let i = 0; i < numberOfParticles; i++) {
             const particle = document.createElement('div');
