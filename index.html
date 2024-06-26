@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horizontal Text Example</title>
+    <title>Stream Starting Soon</title>
     <style>
         @font-face {
             font-family: 'Rostave';
@@ -23,6 +23,7 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
+            flex-direction: column;
         }
 
         .particles {
@@ -31,15 +32,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Ensure particles are behind other content */
-            pointer-events: none; /* Allows clicks to pass through */
+            z-index: -1;
+            pointer-events: none;
         }
 
         .particle {
             position: absolute;
             border-radius: 50%;
-            opacity: 0.8; /* Adjust opacity as needed */
-            animation: moveParticle linear infinite, blink 1s infinite alternate; /* Blink animation */
+            opacity: 0.8;
+            animation: moveParticle linear infinite, blink 1s infinite alternate;
         }
 
         .blue-particle {
@@ -56,46 +57,43 @@
             top: 50%;
             transform: translateY(-50%) rotate(-90deg);
             color: rgb(87, 87, 87);
-            font-size: 8rem; /* Adjust the size as needed */
+            font-size: 8rem;
             white-space: nowrap;
         }
 
         .gif-container {
-            margin-right: 20px; /* Adjust spacing between gif and text */
+            margin-right: 20px;
         }
 
         .text-container {
-            position: relative; /* Ensure proper positioning of absolute elements */
+            position: relative;
             display: flex;
             align-items: center;
-            justify-content: center; /* Center content horizontally */
-            flex-direction: column; /* Stack elements vertically */
+            justify-content: center;
+            flex-direction: column;
         }
 
         .ga-gif {
-            width: 450px; /* Adjust size as needed */
+            width: 450px;
             height: auto;
-            margin-left: 0; /* Adjust margin if needed */
+            margin-left: 0;
         }
 
         .horizontal-text {
             color: white;
-            font-size: 5rem; /* Adjust the size as needed */
+            font-size: 5rem;
             white-space: nowrap;
-            margin-bottom: 20px; /* Spacing below the text */
+            margin-bottom: 20px;
         }
 
         .horizontal-text.white {
             color: white;
-            font-size: 2rem; /* Adjust size as needed */
+            font-size: 2rem;
             white-space: nowrap;
         }
 
         .horizontal-text.white#stream {
-            position: absolute;
-            top: -50px;
-            left: 500px; /* Adjust horizontal positioning */
-            transform: translateX(-50%);
+            margin-bottom: 0;
         }
 
         .horizontal-text span.blue {
@@ -103,11 +101,47 @@
         }
 
         .loading-animation {
-            width: 100px; /* Width of the loading animation */
-            height: 20px; /* Height of the loading animation */
-            background-color: blue; /* Background color */
-            border-radius: 4px; /* Rounded corners */
-            animation: loadingAnimation 1s infinite; /* Animation */
+            width: 100px;
+            height: 20px;
+            background-color: blue;
+            border-radius: 4px;
+            animation: loadingAnimation 1s infinite;
+        }
+
+        .followers-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .followers-text {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .icon-box {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .icon-box img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .icon-box span {
+            color: white;
+            font-size: 1rem;
         }
 
         @keyframes moveParticle {
@@ -115,7 +149,7 @@
                 transform: translate(0, 0);
             }
             100% {
-                transform: translate(var(--translate-x), var(--translate-y)); /* Random endpoint */
+                transform: translate(var(--translate-x), var(--translate-y));
             }
         }
 
@@ -130,17 +164,16 @@
 
         @keyframes loadingAnimation {
             0% {
-                width: 0; /* Start with no width */
+                width: 0;
             }
             50% {
-                width: 100px; /* Halfway, full width */
+                width: 100px;
             }
             100% {
-                width: 0; /* End with no width */
+                width: 0;
             }
         }
 
-        /* Blink Animation */
         @keyframes blink {
             0%, 100% {
                 opacity: 1;
@@ -152,59 +185,49 @@
 
         @media (max-width: 768px) {
             .vertical-text {
-                font-size: 4rem; /* Reduce font size for smaller screens */
-                left: -200px; /* Adjust positioning */
+                font-size: 4rem;
+                left: -200px;
             }
 
             .ga-gif {
-                width: 250px; /* Reduce gif size */
+                width: 250px;
             }
 
             .horizontal-text {
-                font-size: 3rem; /* Reduce font size */
+                font-size: 3rem;
             }
 
             .horizontal-text.white {
-                font-size: 1.5rem; /* Reduce font size */
-            }
-
-            .horizontal-text.white#stream {
-                top: -30px; /* Adjust positioning */
-                left: 250px; /* Adjust positioning */
+                font-size: 1.5rem;
             }
 
             .loading-animation {
-                width: 80px; /* Reduce width */
-                height: 15px; /* Reduce height */
+                width: 80px;
+                height: 15px;
             }
         }
 
         @media (max-width: 480px) {
             .vertical-text {
-                font-size: 2rem; /* Further reduce font size */
-                left: -100px; /* Adjust positioning */
+                font-size: 2rem;
+                left: -100px;
             }
 
             .ga-gif {
-                width: 150px; /* Further reduce gif size */
+                width: 150px;
             }
 
             .horizontal-text {
-                font-size: 2rem; /* Further reduce font size */
+                font-size: 2rem;
             }
 
             .horizontal-text.white {
-                font-size: 1rem; /* Further reduce font size */
-            }
-
-            .horizontal-text.white#stream {
-                top: -20px; /* Adjust positioning */
-                left: 125px; /* Adjust positioning */
+                font-size: 1rem;
             }
 
             .loading-animation {
-                width: 50px; /* Further reduce width */
-                height: 10px; /* Further reduce height */
+                width: 50px;
+                height: 10px;
             }
         }
     </style>
@@ -224,6 +247,21 @@
         <div class="horizontal-text white" id="stream">STREAM</div>
         <div class="horizontal-text" id="starting-soon">STARTING SOON</div>
         <div class="loading-animation"></div> <!-- This is the loading animation -->
+    </div>
+        
+    <!-- New followers section -->
+    <div class="followers-container">
+        <div class="followers-text">RECENTS</div>
+        <div class="icons-container">
+            <div class="icon-box">
+                <img src="twitch.png" alt="Twitch">
+                <span>YHOP821</span>
+            </div>
+            <div class="icon-box">
+                <img src="youtube.png" alt="YouTube">
+                <span>MOHAMMAD</span>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -251,7 +289,7 @@
             // Function to generate particles
             function generateParticles() {
                 const particlesContainer = document.querySelector('.particles');
-                const particleCount = 100; // Number of particles to generate
+                const particleCount = 100;
 
                 for (let i = 0; i < particleCount; i++) {
                     const particle = document.createElement('div');
